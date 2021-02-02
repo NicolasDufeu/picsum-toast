@@ -23,7 +23,7 @@ export class HomePage {
    async presentToast(message: string) {
     const toast =  await this.toastController.create({
       message: message,
-      //duration: 2000,
+      duration: 5000,
       buttons: [
         {
             text: 'OK',
