@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Lorem Picsum
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+   <ion-refresher pullFactor="1" pullMaw="200" pullMin="60" slot="fixed" (ionRefresh)="doRefresh($event)">
+       <ion-refresher-content></ion-refresher-content>
+   </ion-refresher>
+   
+    <ion-list>
+       
+        <ion-item *ngFor="let pic of apiData">
+            <ion-thumbnail slot="start">
+                <ion-img [src]=" 'https://picsum.photos/id/' + pic.id  + '/100/100' "></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+                <h2>Auteur : {{ pic.author }}</h2>
+                <h3>Url : <a [href]="pic.url" target="_blank">{{ pic.url }}</a></h3>
+                <p>Largeur : {{ pic.width }}px, Hauteur : {{ pic.height }}px</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
 </ion-content>
